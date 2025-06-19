@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Indicator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Manrope:wght@200..800&family=Orbitron:wght@400..900&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab:wght@100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="input-box">
+            <input type="password" id="password" placeholder="Enter your password">
+            <button type="submit"><img src="assets/arrow.png"></button>
+            <p id="message">Password is <span id="strength"></span></p>
+        </div>
+
+    </div>
+<script>
+    var pass = document.getElementById("password");
+    var msg = document.getElementById("message");
+    var str = document.getElementById("strength");
+
+    pass.addEventListener('input', () => {
+        if(pass.value.length >0 ){
+            msg.style.display = "block";
+        } else {
+            msg.style.display = "none";
+        }
+        if(pass.value.length < 6){
+            str.innerHTML = "weak";
+            msg.style.color = "red";
+            pass.style.borderColor = "red";
+        } else if(pass.value.length >= 6 && pass.value.length < 10){
+            str.innerHTML = "medium";
+            msg.style.color = "orange";
+            pass.style.borderColor = "orange";
+        } else {
+            str.innerHTML = "strong";
+            msg.style.color = "green";
+            pass.style.borderColor = "green";
+        }
+    })
+
+</script>
+</body>
+</html>
